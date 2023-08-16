@@ -12,7 +12,7 @@ function Article(props){
 function Header(props){
   return <header>
     <h1><a href="/" onClick={(event)=>{
-      // event.preventDefault();
+      event.preventDefault();
       props.onChangeMode();
     }}>{props.title}</a></h1>
   </header>
@@ -36,19 +36,82 @@ function Nav(props){
   </nav>
 }
 
+function Create(props){
+  return <article>
+    <h2>Create</h2>
+    <form onSubmit={event=>{
+      event.preventDefault();
+      const title = event.target.title.value;
+      const body = event.target.body.value;
+      props.onCreate(title, body);
+    }}>
+      <p><input type="text" name="title" placeholder="title"/></p>
+      <p><textarea name="body" placeholder="body"></textarea></p>
+      <p><input type="submit" value="Create"></input></p>
+    </form>
+  </article>
+}
+
+function Update(props) {
+  const [title, setTitle] = useState(props.title);
+  const [body, setBody] = useState(props.body);
+  return (
+    <article>
+      <h2>Update</h2>
+      <form
+        onSubmit={(event) => {
+          event.preventDefault();
+          const title = event.target.title.value;
+          const body = event.target.body.value;
+          props.onUpdate(title, body);
+        }}
+      >
+        <p>
+          <input
+            type="text"
+            name="title"
+            placeholder="title"
+            value={title}
+            onChange={(event) => {
+              setTitle(event.target.value);
+            }}
+          />
+        </p>
+        <p>
+          <textarea
+            name="body"
+            placeholder="body"
+            value={body}
+            onChange={(event) => {
+              setBody(event.target.value);
+            }}
+          ></textarea>
+        </p>
+        <p>
+          <input type="submit" value="Update"></input>
+        </p>
+      </form>
+    </article>
+  );
+}
+
+function Test(props){
+  return <h3>Test 접근에 성공</h3>
+}
+
 function App() {
   const [mode, setMode] = useState('WELCOME');
   const [id, setId] = useState(null);
-  const topics = [
+  const [nextId, setNextId] = useState(4);
+  const [topics, setTopics] = useState([
     {id:1, title:'html', body:'html is ...'},
     {id:2, title:'css', body:'css is ...'},
-    {id:3, title:'javascript', body:'javascript is ...'},
-    {id:4, title:'test', body:'test is ...'}
-  ] 
+    {id:3, title:'javascript', body:'javascript is ...'}
+  ]);
   let content = null;
   if(mode === 'WELCOME'){
     content = <Article title="Welcome" body="Hello, WEB"></Article>
-  } else if(mode === 'READ'){
+  } else if(mode === 'READ') {
     let title, body = null;
     for(let i=0; i<topics.length; i++){
       console.log(topics[i].id, id);
@@ -58,7 +121,40 @@ function App() {
       }
     }
     content = <Article title={title} body={body}></Article>
-  }
+  } else if(mode === 'CREATE'){
+    content = <Create onCreate={(_title, _body)=>{
+      const newTopic = {id:nextId, title:_title, body:_body}
+      const newTopics = [...topics]
+      newTopics.push(newTopic);
+      setTopics(newTopics);
+      setMode('READ');
+      setId(nextId);
+      setNextId(nextId+1);
+    }}></Create>
+  } else if(mode === 'UPDATE'){
+    let title, body = null;
+    for(let i=0; i<topics.length; i++){
+      if(topics[i].id === id){
+        title = topics[i].title;
+        body = topics[i].body;
+      }
+    }
+    content = <Update title={title} body={body} onUpdate={(title, body)=>{
+      console.log(title, body);
+      const newTopics = [...topics]
+      const updatedTopic = {id:id, title:title, body:body}
+      for(let i=0; i<newTopics.length; i++){
+        if(newTopics[i].id === id){
+          newTopics[i] = updatedTopic;
+          break;
+        }
+      }
+      setTopics(newTopics);
+      setMode('READ');
+    }}></Update>
+  } else if(mode === 'TEST'){
+    content = <Article title='TEST' body='test 접근에 성공하셨습니다.'></Article>
+  } 
   return (
     <div>
       <Header title="WEB" onChangeMode={()=>{
@@ -68,10 +164,35 @@ function App() {
         setMode('READ');
         setId(_id);
       }}></Nav>
-
       {content}
+      <div>
+        <a href="/create" onClick={event=>{
+          event.preventDefault();
+          setMode('CREATE');
+        }}>Create</a>
+      </div>
 
-    </div>
+      <div>
+        <a href="/update" onClick={event=>{
+          event.preventDefault();
+          setMode('UPDATE');
+        }}>Upadate</a>
+      </div>
+
+      <div>
+        <a href="/delete" onClick={event=>{
+          event.preventDefault();
+          setMode('DELETE');
+        }}>Delete</a>
+      </div>
+
+      <div>
+        <a href="/test" onClick={event=>{
+          event.preventDefault();
+          setMode('TEST');
+        }}>Test</a>
+      </div>
+  </div>
   );
 }
  
