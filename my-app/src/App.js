@@ -153,7 +153,7 @@ function App() {
       setMode('READ');
     }}></Update>
   } else if(mode === 'TEST'){
-    content = <Article title='TEST' body='test 접근에 성공하셨습니다.'></Article>
+    content = <Article title='TEST' body='test 접근에 성공하셨습니다. '></Article>
   } 
   return (
     <div>
