@@ -192,6 +192,13 @@ function App() {
           setMode('TEST');
         }}>Test</a>
       </div>
+
+      <div>
+        <a href="/test_2" onClick={event=>{
+          event.preventDefault();
+          setMode('TEST_2');
+        }}>Test2</a>
+      </div>
   </div>
   );
 }
