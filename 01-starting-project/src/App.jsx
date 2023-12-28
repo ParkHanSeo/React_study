@@ -1,12 +1,16 @@
-import componentImg from './assets/components.png';
+import { useState } from 'react';
+
 import { CORE_CONCEPTS } from './data';
-import { Header } from './components/Header/Header'
-import { CoreConcept } from './components/CoreConcept/CoreConcept'
-import { TabButton } from './components/TabButton/TabButton'
+import { Header } from './components/Header/Header';
+import { CoreConcept } from './components/CoreConcept/CoreConcept';
+import { TabButton } from './components/TabButton/TabButton';
 
 function App() {
+
+  const [ selectedTopic, setSelectedTopic ] = useState('Please click a button');
+
   const handleClick = (selectedButton) => {
-    console.log(selectedButton)
+    setSelectedTopic(selectedButton);
   }
 
   return (
@@ -30,6 +34,7 @@ function App() {
             <TabButton onSelect={() => handleClick('props')}>Props</TabButton>
             <TabButton onSelect={() => handleClick('state')}>State</TabButton>
           </menu>
+          {selectedTopic}
         </section>
       </main>
     </div>
