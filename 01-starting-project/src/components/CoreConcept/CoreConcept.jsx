@@ -1,3 +1,5 @@
+import './CoreConcept.css'
+
 export const CoreConcept = ({image, title, description}) => {
     return (
       <li>
