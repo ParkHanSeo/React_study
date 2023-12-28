@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import { EXAMPLES } from '../../data';
 import { TabButton } from '../TabButton/TabButton';
+import { Tabs } from '../TabButton/Tabs';
 import { Section } from '../Section';
 
 import './Examples.css'
@@ -29,29 +30,34 @@ export const Examples = () => {
 
     return (
         <Section title="Examples" id="examples">
+          <Tabs buttons={
+            <>
+              <TabButton 
+                isSelected={selectedTopic === 'components'} 
+                onClick={() => handleClick('components')}>
+                Components
+              </TabButton>
+              <TabButton 
+                isSelected={selectedTopic === 'jsx'} 
+                onClick={() => handleClick('jsx')}>
+                JSP
+              </TabButton>
+              <TabButton 
+                isSelected={selectedTopic === 'props'} 
+                onClick={() => handleClick('props')}>
+                Props
+              </TabButton>
+              <TabButton 
+                isSelected={selectedTopic === 'state'} 
+                onClick={() => handleClick('state')}>
+                State
+              </TabButton>
+            </>
+          }>
+            {tabContents}
+          </Tabs>
           <menu>
-            <TabButton 
-              isSelected={selectedTopic === 'components'} 
-              onClick={() => handleClick('components')}>
-              Components
-            </TabButton>
-            <TabButton 
-              isSelected={selectedTopic === 'jsx'} 
-              onClick={() => handleClick('jsx')}>
-              JSP
-            </TabButton>
-            <TabButton 
-              isSelected={selectedTopic === 'props'} 
-              onClick={() => handleClick('props')}>
-              Props
-            </TabButton>
-            <TabButton 
-              isSelected={selectedTopic === 'state'} 
-              onClick={() => handleClick('state')}>
-              State
-            </TabButton>
           </menu>
-          {tabContents}
         </Section>        
     )
 }
