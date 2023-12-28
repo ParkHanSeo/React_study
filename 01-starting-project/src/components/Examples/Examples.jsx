@@ -32,22 +32,22 @@ export const Examples = () => {
           <menu>
             <TabButton 
               isSelected={selectedTopic === 'components'} 
-              onSelect={() => handleClick('components')}>
+              onClick={() => handleClick('components')}>
               Components
             </TabButton>
             <TabButton 
               isSelected={selectedTopic === 'jsx'} 
-              onSelect={() => handleClick('jsx')}>
+              onClick={() => handleClick('jsx')}>
               JSP
             </TabButton>
             <TabButton 
               isSelected={selectedTopic === 'props'} 
-              onSelect={() => handleClick('props')}>
+              onClick={() => handleClick('props')}>
               Props
             </TabButton>
             <TabButton 
               isSelected={selectedTopic === 'state'} 
-              onSelect={() => handleClick('state')}>
+              onClick={() => handleClick('state')}>
               State
             </TabButton>
           </menu>
