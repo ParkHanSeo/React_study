@@ -4,10 +4,12 @@ import { Player } from './components/Player'
 import { GameBoard } from './components/GameBoard'
 import { Log } from './components/Log'
 
+import { WINNING_COMBINATIONS } from './winning-combinations.js'
+
 const deriveActivePlayer = (gameTurns) => {
   let currentPlayer = 'X';
 
-  if(gameTurns.length > 0 && gameTurns[0].player === 'X') {
+  if (gameTurns.length > 0 && gameTurns[0].player === 'X') {
     currentPlayer = 'O';
   }
 
@@ -27,7 +29,7 @@ function App() {
       let currentPlayer = deriveActivePlayer(prevTurns);
 
       const updatedTurns = [
-        { square: {row: rowIndex, col : colIndex}, player: currentPlayer }, 
+        { square: { row: rowIndex, col: colIndex }, player: currentPlayer },
         ...prevTurns
       ];
 
@@ -39,14 +41,22 @@ function App() {
     <main>
       <div id="game-container">
         <ol id="players" className='highlight-player'>
-          <Player initialName="Player 1" symbol="X" isActive={activePlayer === 'X'}/>
-          <Player initialName="Player 2" symbol="O" isActive={activePlayer === 'O'}/>
+          <Player
+            initialName="Player 1"
+            symbol="X"
+            isActive={activePlayer === 'X'}
+          />
+          <Player
+            initialName="Player 2"
+            symbol="O"
+            isActive={activePlayer === 'O'}
+          />
         </ol>
-        <GameBoard 
-          onSelectSquare={handleSelectSquare} 
-          turns={gameTurns}/>
+        <GameBoard
+          onSelectSquare={handleSelectSquare}
+          turns={gameTurns} />
       </div>
-      <Log turns={gameTurns}/>
+      <Log turns={gameTurns} />
     </main>
   );
 }
