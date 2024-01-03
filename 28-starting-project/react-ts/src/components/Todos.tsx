@@ -1,10 +1,12 @@
 import React from 'react';
 
-export const Todos: React.FC<{ items: string[] }> = (props) => {
+import { Todo } from '../domain/todo'
+
+export const Todos: React.FC<{ items: Todo[] }> = (props) => {
     return (
         <ul>
             {props.items.map((data) => (
-                <li>{data}</li>
+                <li key={data.id}>{data.text}</li>
             ))}
         </ul>
     );
