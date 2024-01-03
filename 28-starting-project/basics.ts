@@ -46,3 +46,12 @@ let course = 'React - The Complete Guide';
 // 유니온 타입
 let course2: string | number = 'React - The Complete Guide';
 course2 = 12341;
+
+// Functions & types
+const add = (a: number, b: number): number | string => {
+    return a + b;
+}
+
+function print(value: any): void {
+    console.log(value);
+}
