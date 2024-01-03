@@ -55,3 +55,17 @@ const add = (a: number, b: number): number | string => {
 function print(value: any): void {
     console.log(value);
 }
+
+// Generics
+
+const insertAtBeginning = <T>(array: T[], value: T) => {
+    const newArray = [value, ...array];
+    return newArray;
+}
+
+const demoArray = [1, 2, 3];
+
+const updateaArray = insertAtBeginning(demoArray, -1); // [-1, 1, 2, 3]
+insertAtBeginning(['a','b','c'], 'd');
+
+// updateaArray[0].split('');
