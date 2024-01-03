@@ -7,7 +7,7 @@
 let age: number;
 age = 12;
 
-let userName: string;
+let userName: string | string[];
 userName = 'Max';
 
 let isInstructor: boolean;
@@ -40,3 +40,7 @@ let people: {
 
 let course = 'React - The Complete Guide';
 // course = 12341;
+
+// 유니온 타입
+let course2: string | number = 'React - The Complete Guide';
+course2 = 12341;
