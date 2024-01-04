@@ -7,9 +7,11 @@ import { Todo } from './domain/todo';
 function App() {
 
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [count, setCount] = useState(1);
 
   const addTodoHandler = (todoText: string) => {
-    const newTodo = new Todo(todoText);
+    setCount(count + 1);
+    const newTodo = new Todo(count, todoText);
 
     setTodos((prevTodos) => {
       return prevTodos.concat(newTodo);
@@ -22,10 +24,22 @@ function App() {
     });
   }
 
+  const updateTodoHandler = (todoIdx: number, todoText: string) => {
+    setTodos((prevTodos) => {
+      const updatedTodos = prevTodos.map((todo) => {
+        if (todo.idx === todoIdx) {
+          return { ...todo, text: todoText };
+        }
+        return todo;
+      });
+      return updatedTodos;
+    });
+  };
+
   return (
     <div>
       <NewTodo onAddTodo={addTodoHandler}/>
-      <Todos items={todos} onDeleteTodo={deleteTodoHandler}/>
+      <Todos items={todos} onDeleteTodo={deleteTodoHandler} onUpdateTodo={updateTodoHandler}/>
     </div>
   );
 }
