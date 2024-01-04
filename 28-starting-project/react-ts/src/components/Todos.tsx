@@ -4,15 +4,22 @@ import { Todo } from '../domain/todo'
 import { TodoList } from './TodoList'
 import styles from './Todos.module.scss'
 
-export const Todos: React.FC<{ items: Todo[], onDeleteTodo: (id: string) => void }> = (props) => {
+type Props = {
+    items: Todo[];
+    onDeleteTodo: (id: string) => void;
+}
 
+export const Todos: React.FC<Props> = ({
+    items,
+    onDeleteTodo
+}) => {
     return (
         <ul className={styles.todos}>
-            {props.items.map((data) => (
+            {items.map((data) => (
                 <TodoList 
                     key={data.id} 
                     text={data.text} 
-                    onDeleteTodo={props.onDeleteTodo.bind(null, data.id)}
+                    onDeleteTodo={onDeleteTodo.bind(null, data.id)}
                 />
             ))}
         </ul>

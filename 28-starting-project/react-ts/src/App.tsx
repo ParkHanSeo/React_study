@@ -19,7 +19,7 @@ function App() {
   const deleteTodoHandler = (todoId: string) => {
     setTodos((todos) => {
       return todos.filter((data) => data.id !== todoId);
-    })
+    });
   }
 
   return (

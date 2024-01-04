@@ -3,9 +3,16 @@ import styles from './TodoItem.module.scss'
 
 import { Todo } from '../domain/todo'
 
-export const TodoList: React.FC<{ text: string, onDeleteTodo: (event: React.MouseEvent) => void }> = (props) => {
-    
+type Props = {
+    text: string, 
+    onDeleteTodo: () => void
+}
+
+export const TodoList: React.FC<Props> = ({
+    text,
+    onDeleteTodo
+}) => {
     return (
-        <li className={styles.item} onClick={props.onDeleteTodo}>{props.text}</li>
+        <li className={styles.item} onClick={onDeleteTodo}>{text}</li>
     );
 }

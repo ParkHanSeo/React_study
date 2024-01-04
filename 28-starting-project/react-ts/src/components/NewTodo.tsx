@@ -1,7 +1,13 @@
 import React, { useRef } from "react";
 import styles from './NewTodo.module.scss'
 
-export const NewTodo: React.FC<{ onAddTodo: (text:string) => void }> = (props) => {
+type Props = {
+    onAddTodo: (text:string) => void;
+}
+
+export const NewTodo: React.FC<Props> = ({
+    onAddTodo
+}) => {
 
     const todoTextInputRef = useRef<HTMLInputElement>(null);
 
@@ -14,7 +20,7 @@ export const NewTodo: React.FC<{ onAddTodo: (text:string) => void }> = (props) =
             return;
         }
 
-        props.onAddTodo(enteredText);
+        onAddTodo(enteredText);
     };
 
 
