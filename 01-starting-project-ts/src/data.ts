@@ -3,7 +3,15 @@ import propsImg from './assets/config.png';
 import jsxImg from './assets/jsx-ui.png';
 import stateImg from './assets/state-mgmt.png';
 
-export const CORE_CONCEPTS = [
+// Core Concepts의 타입 정의
+type CoreConcept = {
+  image: string;
+  title: string;
+  description: string;
+};
+
+// Core Concepts 배열의 타입 정의
+export const CORE_CONCEPTS: CoreConcept[] = [
   {
     image: componentsImg,
     title: 'Components',
@@ -30,7 +38,24 @@ export const CORE_CONCEPTS = [
   },
 ];
 
-export const EXAMPLES = {
+// Examples의 타입 정의
+type Example = {
+  title: string;
+  description: string;
+  code: string;
+};
+
+// Examples 객체의 타입 정의
+type ExamplesType = {
+  components: Example;
+  jsx: Example;
+  props: Example;
+  state: Example;
+  [key: string]: Example;
+};
+
+// Examples 객체 정의
+export const EXAMPLES: ExamplesType = {
   components: {
     title: 'Components',
     description:
