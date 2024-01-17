@@ -20,12 +20,12 @@
       cursor: pointer;
       transition: all 0.2s ease-in-out;
     }
-    button:hover {
-      background-color: #1b082f;
+    .active {
+      background-color: #7925d3;
       color: #ebe7ef;
     }
-    button.active {
-      background-color: #7925d3;
+    button:hover {
+      background-color: #1b082f;
       color: #ebe7ef;
     }
   }

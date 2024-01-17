@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import styles from '../Examples/Examples.module.scss';
 
 type Props = {
     children: ReactNode
@@ -8,9 +9,10 @@ type Props = {
 
 
 export const TabButton: React.FC<Props> = ({ children, isSelected, ...props }) => {
+    console.log(isSelected);
     return (
         <li>
-            <button className={isSelected ? 'active' : ''} {...props}>
+            <button className={isSelected ? styles.active : ''} {...props}>
                 {children}
             </button>
         </li>
