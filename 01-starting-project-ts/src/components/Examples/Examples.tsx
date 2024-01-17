@@ -14,7 +14,6 @@ export const Examples: React.FC<{}> = ({}) => {
     }
 
     let tabContents = <p>Please select a topic.</p>;
-    const title:string = EXAMPLES[selectedTopic].title;
 
     if(selectedTopic) {
         tabContents = 
@@ -28,7 +27,7 @@ export const Examples: React.FC<{}> = ({}) => {
     }
 
     return (
-      <Section title="Examples" id="examples">
+      <Section title="Examples">
         <Tabs 
           buttons={
           <>
