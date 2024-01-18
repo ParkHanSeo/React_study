@@ -2,16 +2,25 @@ import React, { useRef, useState } from 'react';
 
 import { TPLACES, AVAILABLE_PLACES } from './data';
 import { Header } from './component/Header/Header';
-import { Modal } from './component/Modal/Modal';
+import { Modal, ModalMethods } from './component/Modal/Modal';
 import { Places } from './component/Places/Places';
 
 function App() {
-  const modal = useRef(null);
+  const modal = useRef<ModalMethods | null>(null);
   const selectedPlace = useRef<string>();
   const [pickedPlaces, setPickedPlaces] = useState<TPLACES[]>([]);
 
   const handleStartRemovePlace = (id: string) => {
-    selectedPlace.current = id;
+    if(modal.current) {
+      modal.current.open();
+      selectedPlace.current = id;
+    }
+  }
+
+  const handleStopRemovePlace = () => {
+    if(modal.current) {
+      modal.current.close();      
+    }
   }
 
   const handleSelectPlace = (id: string): void => {
@@ -28,6 +37,8 @@ function App() {
 
   return (
     <>
+      <Modal ref={modal}></Modal>
+
       <Header />
       <main>
         <Places

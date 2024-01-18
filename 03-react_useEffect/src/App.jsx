@@ -12,6 +12,7 @@ function App() {
   const [pickedPlaces, setPickedPlaces] = useState([]);
 
   function handleStartRemovePlace(id) {
+    console.log(modal);
     modal.current.open();
     selectedPlace.current = id;
   }
