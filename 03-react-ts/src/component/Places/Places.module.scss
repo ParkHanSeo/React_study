@@ -41,14 +41,14 @@
         padding: 0;
         transition: all 0.2s ease-in-out;
     }
-    :nth-child(odd) button:hover,
-    :nth-child(odd) button:focus {
+    &:nth-child(odd) button:hover,
+    &:nth-child(odd) button:focus {
         box-shadow: 0 0 8px 4px rgba(255, 217, 0, 0.6);
         border-radius: 8px;
         transform: rotate(5deg);
     }
-    :nth-child(even) button:hover,
-    :nth-child(even) button:focus {
+    &:nth-child(even) button:hover,
+    &:nth-child(even) button:focus {
       box-shadow: 0 0 8px 4px rgba(255, 217, 0, 0.6);
       border-radius: 8px;
       transform: rotate(-5deg);
@@ -71,5 +71,5 @@
         border-radius: 4px;
         padding: 0.15rem 0.35rem;
         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
-    }    
+    }
 }
