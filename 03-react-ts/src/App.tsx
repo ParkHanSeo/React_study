@@ -4,6 +4,7 @@ import { TPLACES, AVAILABLE_PLACES } from './data';
 import { Header } from './component/Header/Header';
 import { Modal, ModalMethods } from './component/Modal/Modal';
 import { Places } from './component/Places/Places';
+import { DeleteConfirmation } from './component/Modal/DeleteConfirmation';
 
 function App() {
   const modal = useRef<ModalMethods | null>(null);
@@ -33,11 +34,23 @@ function App() {
         return [place, ...prevPickedPlaces].filter(Boolean) as TPLACES[]; 
       }
     });
-  };  
+  };
+
+  const handleRemovePlace = () => {
+    setPickedPlaces((prevPickedPlaces: TPLACES[]) => 
+      prevPickedPlaces.filter((data) => data.id !== selectedPlace.current)
+    );
+    modal.current?.close();
+  }
 
   return (
     <>
-      <Modal ref={modal}></Modal>
+      <Modal ref={modal}>
+        <DeleteConfirmation 
+          onCancel={handleStopRemovePlace}
+          onConfirm={handleRemovePlace}        
+        />
+      </Modal>
 
       <Header />
       <main>
