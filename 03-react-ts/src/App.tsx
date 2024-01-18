@@ -14,16 +14,17 @@ function App() {
     selectedPlace.current = id;
   }
 
-  const handleSelectPlace = (id: string) => {
-    setPickedPlaces((prevPickedPlaces) => {
+  const handleSelectPlace = (id: string): void => {
+    setPickedPlaces((prevPickedPlaces: TPLACES[]) => {
       const alreadySelected = prevPickedPlaces.some((place) => place.id === id);
       if (alreadySelected) {
         return prevPickedPlaces;
       } else {
-        return prevPickedPlaces;
+        const place = AVAILABLE_PLACES.find((place) => place.id === id);
+        return [place, ...prevPickedPlaces].filter(Boolean) as TPLACES[]; 
       }
     });
-  }
+  };  
 
   return (
     <>
