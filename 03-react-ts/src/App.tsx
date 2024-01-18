@@ -1,10 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import { Header } from './component/Header/Header';
+
+import logoImg from './assets/logo.png';
 
 function App() {
   return (
     <>
+      <Header />
     </>
   );
 }
