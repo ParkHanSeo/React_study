@@ -29,7 +29,6 @@ const deriveActivePlayer = (gameTurns) => {
 
 const deriveGameBoard = (gameTurns) => {
   let gameBoard = [...INITIAL_GAME_BOARD.map(arr => [...arr])];
-  console.log(gameBoard);
 
   for (const turn of gameTurns) {
     const { square, player } = turn;
@@ -48,7 +47,8 @@ const deriveWinner = (gameBoard, players) => {
     const firstSquareSymbol = gameBoard[combination[0].row][combination[0].column];
     const secondSquareSymbol = gameBoard[combination[1].row][combination[1].column];
     const thirdSquareSymbol = gameBoard[combination[2].row][combination[2].column];
-
+    console.log("ㅁㄴㅇㅁㄴㅇ");
+    console.log(firstSquareSymbol);
     if (
       firstSquareSymbol &&
       firstSquareSymbol === secondSquareSymbol &&

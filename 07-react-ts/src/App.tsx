@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react';
 import { Player } from './component/Player/Player';
 import { GameBoard } from './component/GameBoard/GameBoard';
 import { Log } from './component/Log/Log';
+import { GameOver } from './component/GameOver/GameOver';
 
 import styles from './App.module.scss';
 import { commonTs, Turn } from './Common';
@@ -17,6 +18,8 @@ const App = () => {
   const [gameTurns, setGameTurns] = useState<Turn[]>([]);
   const activePlayer = commonTs.deriveActivePlayer(gameTurns);
   const gameBoard = commonTs.deriveGameBoard(gameTurns);
+  const winner = commonTs.deriveWinner(gameBoard, players);
+  const hasDraw = gameTurns.length === 9 && !winner;
 
   const handlePlayerNameChange = (symbol: string, newName: string) => {
     setPlayers(prePlayers => {
@@ -26,6 +29,10 @@ const App = () => {
       }
     });
   }
+
+  const handleRestatrt = () => {
+    setGameTurns([]);
+  }  
 
   const handleSelectSquare = (rowIndex: number, colIndex: number) => {
     setGameTurns((prevTurns: Turn[]) => {
@@ -56,6 +63,7 @@ const App = () => {
             onChangeName={handlePlayerNameChange}
           />          
         </ol>
+        {(winner || hasDraw) && <GameOver winner={winner} onRestart={handleRestatrt}/>}
         <GameBoard 
           onSelectSquare={handleSelectSquare}
           board={gameBoard}          
