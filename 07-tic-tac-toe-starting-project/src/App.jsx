@@ -29,6 +29,7 @@ const deriveActivePlayer = (gameTurns) => {
 
 const deriveGameBoard = (gameTurns) => {
   let gameBoard = [...INITIAL_GAME_BOARD.map(arr => [...arr])];
+  console.log(gameBoard);
 
   for (const turn of gameTurns) {
     const { square, player } = turn;

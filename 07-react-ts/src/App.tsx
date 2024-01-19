@@ -1,9 +1,10 @@
 import React, { useRef, useState } from 'react';
 
 import { Player } from './component/Player/Player';
+import { GameBoard } from './component/GameBoard/GameBoard';
 
 import styles from './App.module.scss';
-import { commonTs } from './Common';
+import { commonTs, Turn } from './Common';
 
 const PLAYERS: ({X: string, O:string}) = {
   X: 'Player_1',
@@ -12,16 +13,29 @@ const PLAYERS: ({X: string, O:string}) = {
 
 const App = () => {
   const [players, setPlayers] = useState(PLAYERS);
-  const [gameTurns, setGameTurns] = useState<[]>([]);
+  const [gameTurns, setGameTurns] = useState<Turn[]>([]);
   const activePlayer = commonTs.deriveActivePlayer(gameTurns);
+  const gameBoard = commonTs.deriveGameBoard(gameTurns);
 
   const handlePlayerNameChange = (symbol: string, newName: string) => {
     setPlayers(prePlayers => {
       return {
-        ...prePlayers,
+        ...prePlayers, 
         [symbol]: newName
       }
     });
+  }
+
+  const handleSelectSquare = (rowIndex: number, colIndex: number) => {
+    setGameTurns((prevTurns: Turn[]) => {
+      let currentPlayer = commonTs.deriveActivePlayer(prevTurns);
+      const updatedTurns: Turn[] = [
+        { square: { row: rowIndex, col: colIndex }, player: currentPlayer },
+        ...prevTurns
+      ];
+      
+      return updatedTurns;
+    })
   }
 
   return (
@@ -41,6 +55,10 @@ const App = () => {
             onChangeName={handlePlayerNameChange}
           />          
         </ol>
+        <GameBoard 
+          onSelectSquare={handleSelectSquare}
+          board={gameBoard}          
+        />
       </div>
     </main>
   );
