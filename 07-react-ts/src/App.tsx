@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 
 import { Player } from './component/Player/Player';
 import { GameBoard } from './component/GameBoard/GameBoard';
+import { Log } from './component/Log/Log';
 
 import styles from './App.module.scss';
 import { commonTs, Turn } from './Common';
@@ -60,6 +61,7 @@ const App = () => {
           board={gameBoard}          
         />
       </div>
+      <Log turns={gameTurns}/>
     </main>
   );
 }
