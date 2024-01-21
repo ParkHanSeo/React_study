@@ -9,7 +9,7 @@ type Props = {
 
 
 export const TabButton: React.FC<Props> = ({ children, isSelected, ...props }) => {
-    console.log(isSelected);
+    
     return (
         <li>
             <button className={isSelected ? styles.active : ''} {...props}>
