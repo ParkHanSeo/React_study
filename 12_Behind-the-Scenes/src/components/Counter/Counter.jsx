@@ -55,6 +55,12 @@ const Counter = ({ initialCount }) => {
         <IconButton icon={PlusIcon} onClick={handleIncrement}>
           Increment
         </IconButton>
+        <IconButton icon={MinusIcon} onClick={handleDecrement}>
+          Decrement
+        </IconButton>
+        <IconButton icon={MinusIcon} onClick={handleDecrement}>
+          Decrement
+        </IconButton>
       </p>
     </section>
   );
