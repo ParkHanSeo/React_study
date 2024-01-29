@@ -27,6 +27,19 @@ function isPrime(number) {
   }
 
 export const Checker = () => {
+  log('<Counter /> rendered', 1);
+  const initialCountIsPrime = isPrime(initialCount);
+
+  const [counter, setCounter] = useState(initialCount);
+
+  function handleDecrement() {
+    setCounter((prevCounter) => prevCounter - 1);
+  }
+
+  function handleIncrement() {
+    setCounter((prevCounter) => prevCounter + 1);
+  }
+    
     return(
         <section className="counter">
         <p className="counter-info">
