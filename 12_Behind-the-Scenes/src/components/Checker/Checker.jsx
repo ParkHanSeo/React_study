@@ -41,9 +41,9 @@ export const Checker = () => {
   }
     
     return(
-        <section className="counter">
-        <p className="counter-info">
-          The initial counter value was <strong>{initialCount}</strong>. It{' '}
+        <section className="checker">
+        <p className="checker-info">
+          The initial checker value was <strong>{initialCount}</strong>. It{' '}
           <strong>is {initialCountIsPrime ? 'a' : 'not a'}</strong> prime number.
         </p>
         </section>
