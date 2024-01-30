@@ -46,6 +46,14 @@ export const Checker = () => {
           The initial checker value was <strong>{initialCount}</strong>. It{' '}
           <strong>is {initialCountIsPrime ? 'a' : 'not a'}</strong> prime number.
         </p>
+        <p>
+          <IconButton icon={MinusIcon} onClick={handleDecrement}>
+            Decrement
+          </IconButton>
+          <IconButton icon={PlusIcon} onClick={handleIncrement}>
+            Increment
+          </IconButton>          
+        </p>
         </section>
     );
 };
