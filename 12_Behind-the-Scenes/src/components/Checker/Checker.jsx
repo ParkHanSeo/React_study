@@ -52,7 +52,10 @@ export const Checker = () => {
           </IconButton>
           <IconButton icon={PlusIcon} onClick={handleIncrement}>
             Increment
-          </IconButton>          
+          </IconButton>
+          <IconButton icon={PlusIcon} onClick={handleIncrement}>
+            Increment
+          </IconButton>        
         </p>
         </section>
     );
