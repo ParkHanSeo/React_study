@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { DynamicComponent } from './Hook/DynamicComponent';
 import { Footer } from './Hook/Footer';
 import '../src/index.css';
+
+import { UseState } from './Hook/UseState/UseState';
 
 const App = () => {
 
@@ -94,8 +95,11 @@ const App = () => {
               </ul>
             </div>
           </div>
-          <Footer />
-        </div> : <DynamicComponent studyType={studyType}/>
+        </div> : 
+        <div className='container'>
+          {studyType === 'UseState' && <UseState />}
+          <Footer hookTypeClickHandle={hookTypeClickHandle}/>
+        </div>
       }
     </>
   );
