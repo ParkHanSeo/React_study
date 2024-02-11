@@ -29,6 +29,12 @@ export const UseState: React.FC<{}> = () => {
                     </button>
                 </li>
                 <li>
+                    <h3>useState_1</h3>
+                    <button onClick={handleClick}>
+                        2번째 카운트를 증가 {count}
+                    </button>
+                </li>
+                <li>
                     <h3>useState_2</h3>
                     <input value={text} onChange={handleChange} />
                     <p>You typed: {text}</p>
