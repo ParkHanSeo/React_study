@@ -11,10 +11,6 @@ export default function Player() {
     playerName.current.value = '';
   }
 
-  const handleClick2 = () => {
-    setEnteredPlayerName(playerName.current.value);
-  }
-
   return (
     <section id="player">
       <h2>Welcome {enteredPlayerName ?? 'unknown entity'}</h2>

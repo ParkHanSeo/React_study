@@ -1,4 +1,4 @@
-export const TImerChallenge = ({ title, targetTime }) => {
+export const TimerChallenge = ({ title, targetTime }) => {
     return (
         <section className="challenge">
             <h2>{title}</h2>
