@@ -10,7 +10,7 @@ function App() {
         <TimerChallenge title="Not Easy" targetTime={5} />
         <TimerChallenge title="Getting tough" targetTime={10} />
         <TimerChallenge title="Prop only" targetTime={15} />
-        <TimerChallenge title="" targetTime={20} />
+        <TimerChallenge title="Temp" targetTime={20} />
       </div>
     </>
   );
