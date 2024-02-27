@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Footer } from './Hook/Footer';
 import '../src/index.css';
 
-import { UseState } from './Hook/UseState/UseState';
+import { UseState } from './Hook/useState/UseState';
+import { UseRef } from './Hook/useRef/UseRef';
 
 const App = () => {
 
@@ -98,6 +99,7 @@ const App = () => {
         </div> : 
         <div className='container'>
           {studyType === 'UseState' && <UseState />}
+          {studyType === 'UseRef' && <UseRef />}
           <Footer hookTypeClickHandle={hookTypeClickHandle}/>
         </div>
       }

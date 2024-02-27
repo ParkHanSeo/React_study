@@ -1,0 +1,23 @@
+.useRefUl {
+    > li {
+        margin-left: 15px;
+        padding: 10px;
+        border-radius: 12px;
+        outline: solid 2px black;
+        h3 {
+            text-align: center;
+        }
+    }
+}
+
+.formDiv {
+    display: flex;
+    flex-direction: column;
+}
+
+.pDiv {
+    margin-top: 15px;
+    p {
+        margin: 0;
+    }
+}
