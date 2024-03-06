@@ -17,7 +17,7 @@ export const TimerChallenge = ({ title, targetTime }) => {
             dialog.current.open();
         }, targetTime * 1000);
 
-        // setTimerStarted(true);
+        setTimerStarted(true);
     }
 
     const handleStop = () => {
