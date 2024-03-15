@@ -27,6 +27,11 @@ export const UseRef: React.FC<{}> = () => {
       ++varCount;
       console.log("varCount : ", varCount);
     }
+
+    const slowDownVar = () => {
+        ++varCount;
+        console.log("varCount : ", varCount);
+    }
     return (
         <div>
             <ul className={styles.useRefUl}>
